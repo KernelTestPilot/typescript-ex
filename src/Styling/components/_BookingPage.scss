@@ -12,6 +12,10 @@ table {
   tbody {
     border: 1px solid black;
     tr {
+      td:nth-child(1) {
+        text-align: center;
+        width: 50px;
+      }
       td {
         position: relative;
         border: 1px solid black;

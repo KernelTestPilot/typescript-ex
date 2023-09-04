@@ -11,6 +11,10 @@ table thead tr th {
 table tbody {
   border: 1px solid black;
 }
+table tbody tr td:nth-child(1) {
+  text-align: center;
+  width: 50px;
+}
 table tbody tr td {
   position: relative;
   border: 1px solid black;

@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function UserList() {
+  const Schedule = [
+    {
+      excersise: "Kondition",
+      users:[]
+    },
+    {
+      excersise: "Yoga",
+      users:[
+
+      ]
+    }
+  ]
+
+  const [tempList, setTempList] = useState(Schedule) //OBS, TEMPORÄR
+
   return (
-    <div>UserList</div>
+    <>
+    {console.log(tempList)}
+    {/* {tempList.filter((type => type.excersise.includes())} */}
+    {/* {tempList.map((data) => { return(<h2>{data.excersise}</h2>)})} */}
+    </>
   )
 }
+export default UserList;
 
-export default UserList
