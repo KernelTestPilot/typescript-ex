@@ -1,25 +1,21 @@
-import React from 'react'
-import { Weekday } from '../Types/ScheduleTypes';
-import { daysToMilliseconds } from '../Pages/BookingPage';
 
+import Calendar from '../Services/Calendar';
+import React, { useState,useEffect} from 'react';
 interface BookingTheadProps {
-    weekdays: Array<Weekday>,
-    mondayDate: Date
+   dateString: String [],
+    weekdays: String[],
 }
 
-export default function BookingThead({weekdays, mondayDate}: BookingTheadProps) {
-
+export default function BookingThead({weekdays, dateString}: BookingTheadProps) {
   return (
     <thead>
-        <tr>
-            <th><p>Dag/Tid</p></th>
-                {weekdays.map((day, index) => {
-                    const dateObject = new Date(mondayDate);
-                    dateObject.setTime(dateObject.getTime() + daysToMilliseconds(index));
-                    const dateString: string = dateObject.toLocaleDateString();
-                    return <th><p>{day} {dateString.substring(5, dateString.length)}</p></th>
-                })}
-        </tr>
+      <tr>
+        <th><p>Dag/Tid</p></th>
+        {weekdays.map((day, index) => {
+          const combinedValue = `${day} ${dateString[index].substring(5, dateString[index].length)}`;
+          return <th key={index}><p>{combinedValue}</p></th>;
+        })}
+      </tr>
     </thead>
   )
 }

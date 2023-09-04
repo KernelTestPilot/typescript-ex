@@ -4,8 +4,7 @@ import  {useState, useEffect } from "react";
 import BookingThead from '../Components/BookingThead';
 import BookingTbody from '../Components/BookingTbody';
 import { BookingInfo } from '../Types/BookingType';
-
-const weekdays: Array<Weekday> = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+import Calendar from '../Services/Calendar';
 
 export const fakeData: Array<BookingInfo> = [
     {startDate: "2023-09-05",
@@ -25,23 +24,19 @@ export const fakeData: Array<BookingInfo> = [
     trainType: "Kondition"}
 ]
 
-export function daysToMilliseconds(day: number): number {
-    return day * 24 * 60 * 60 * 1000;
-}
 
 function BookingPage() {
-    const mondayDate = new Date();
-    
+    const calendar = new Calendar();    
     // Hämtar datumet för måndagen för veckan man är på
-     mondayDate.setTime(mondayDate.getTime() - (daysToMilliseconds(mondayDate.getDay() - 1)));
-
-     
-
+    const mondayDate = calendar.getMonday();
+    //hämtar veckans datum + dagar som objekt
+    const weekdays = calendar.getWeek();
+    
   return (
     <div><h2>BookingPage</h2>
         <table>
-            <BookingThead mondayDate={mondayDate} weekdays={weekdays}/>
-            <BookingTbody mondayDate={mondayDate} weekdays={weekdays}/>
+        <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
+        <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />
         </table>
     </div>
   )
