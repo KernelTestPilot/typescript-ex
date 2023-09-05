@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { BookingInfo } from '../Types/BookingType'
 
 interface BookElementProps {
@@ -8,7 +8,7 @@ interface BookElementProps {
 export default function BookElement({booking}: BookElementProps): JSX.Element {
 
     const time: number = booking.timeEnd - booking.timeStart;
-    const styles = {height: `${time}00%`, paddingBottom: `${time === 1 ? 0 : 2 * time}px`}
+    const styles: CSSProperties = {height: `${time}00%`, paddingBottom: `${time === 1 ? 0 : 2 * time}px`}
 
     return (
     <div className='booked' style={styles}>

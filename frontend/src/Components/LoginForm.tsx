@@ -17,14 +17,14 @@ const LoginForm: React.FC<LoginFormProps> = ({
                 id="username"
                 name="username" 
                 type="text" 
-                placeholder="Username"
+                placeholder="Username..."
                 onChange={handleFormChange}
                 />
              <input className="" 
                 id="password" 
                 type="password"
                 name="password"  
-                placeholder="******************"
+                placeholder="Lösenord..."
                 onChange={handleFormChange}
                 />
             <button type='submit'
