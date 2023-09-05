@@ -2,10 +2,14 @@ import React from 'react'
 import LoginForm from '../Components/LoginForm'
 import Banner from '../Components/Banner'
 import UserList from '../Components/UserList'
-import { useState,ChangeEvent, FormEvent } from 'react'
-import {useNavigate } from 'react-router-dom';
+import { useState, ChangeEvent } from 'react'
+import { useNavigate } from 'react-router-dom';
+import fetchHelper from '../Utils/fetchHelper'
 
-
+interface Credentials {
+  message: string,
+  token: object
+}
 
 function LandingPage() {
 
@@ -14,7 +18,7 @@ function LandingPage() {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
-  const handleFormChange = (event: ChangeEvent<HTMLInputElement>) => {
+  function handleFormChange(event: ChangeEvent<HTMLInputElement>): void {
     const {value,name} = event.target;
     setFormData(prevData => ({
       ...prevData,
@@ -23,15 +27,17 @@ function LandingPage() {
 }
 
 
-const handleLogin = () => {
-  console.log(formData)
+async function handleLogin () {
+  setErrorMessage("");
+  const result: Response = await fetchHelper("/auth/login", "POST", formData);
 
-  if(formData.username ==="test" && formData.password === "test"){
-    const setToken =  {username: "Oskar", role: "admin"};
+  const response: Credentials = await result.json();
+  if (result.status < 400){
+    sessionStorage.setItem("token" , JSON.stringify(response.token))
     navigate("/book")
-    
+  } else {
+    setErrorMessage(response.message);
   }
-
 };
   return (
     <>
@@ -39,6 +45,7 @@ const handleLogin = () => {
     <LoginForm 
       handleFormChange={handleFormChange}
       handleLogin={handleLogin} />
+    <p>{errorMessage}</p>
     <UserList />
     </>
   )

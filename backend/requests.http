@@ -24,7 +24,8 @@ Content-Type: application/json
     "date": "2023-09-06",
     "trainer": "Isac",
     "trainType": "Kondition",
-    "hours": 3
+    "hours": 3,
+    "startTime": 9
 }
 ###
 POST HTTP://localhost:3001/user/book

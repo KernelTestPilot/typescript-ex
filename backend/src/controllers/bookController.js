@@ -26,7 +26,7 @@ async function addBooking(req, res) {
 async function getAllBookings(req, res) {
   const result = await bookService.getAllBookings();
 
-  res.status(200).send({ bookings: result[0] });
+  res.status(200).send(result[0]);
 }
 
 async function getSubscribedUsers(req, res) {

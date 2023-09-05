@@ -46,6 +46,7 @@ function initializeDB() {
     CREATE TABLE bookings (
         bookingid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
         date DATE NOT NULL,
+        startTime int NOT NULL, 
         hours int NOT NULL,
         trainer varchar(20) NOT NULL,
         trainType varchar(20) NOT NULL,

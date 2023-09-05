@@ -1,13 +1,13 @@
 import React, { CSSProperties } from 'react'
-import { BookingInfo } from '../Types/BookingType'
+import { Bookings } from './BookingTbody';
 
 interface BookElementProps {
-    booking: BookingInfo
+    booking: Bookings
 }
 
 export default function BookElement({booking}: BookElementProps): JSX.Element {
 
-    const time: number = booking.timeEnd - booking.timeStart;
+    const time: number = booking.hours;
     const styles: CSSProperties = {height: `${time}00%`, paddingBottom: `${time === 1 ? 0 : 2 * time}px`}
 
     return (
