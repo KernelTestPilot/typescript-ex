@@ -2,8 +2,8 @@ import mysql2 from "mysql2";
 
 const connection = mysql2.createConnection({
   host: "localhost",
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  user: "root",
+  password: "password",
   multipleStatements: true,
 });
 

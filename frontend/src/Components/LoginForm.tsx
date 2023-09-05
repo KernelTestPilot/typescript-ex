@@ -11,28 +11,30 @@ const LoginForm: React.FC<LoginFormProps> = ({
 }) => {
 
   return (
-    <>
+    <div className='login'>
         <form>
-        <input className="" 
+          <label> <p> Username</p></label>
+        <input className="login-input" 
                 id="username"
                 name="username" 
                 type="text" 
                 placeholder="Username..."
                 onChange={handleFormChange}
                 />
-             <input className="" 
+                <label> <p> Password</p></label>
+             <input className="login-input" 
                 id="password" 
                 type="password"
                 name="password"  
                 placeholder="Lösenord..."
                 onChange={handleFormChange}
                 />
-            <button type='submit'
+            <button className="login-button" type='submit'
             onClick={(e) =>{ e.preventDefault();
                handleLogin()}}
             >Logga in</button>
         </form>
-    </>
+   </div>
   )
 }
 
