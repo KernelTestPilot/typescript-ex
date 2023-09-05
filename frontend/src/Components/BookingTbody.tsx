@@ -40,8 +40,8 @@ export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element
     }, [setBookings]);
 
   return (
-    <tbody>{hours.map((hourOfDay) => {
-        return <tr>
+    <tbody>{hours.map((hourOfDay, hourIndex) => {
+        return <tr key={`table-row-${hourIndex}`}>
             <td><p>{hourOfDay}</p></td>
             {weekdays.map((day, dayIndex) => {
                 let bookElement: JSX.Element = <div></div>;
@@ -51,7 +51,7 @@ export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element
                 if(booking !== undefined) {
                     bookElement = <BookElement booking={booking}/>;
                 }
-                return <td>{bookElement}</td>
+                return <td key={`table-td-${dayIndex}`}>{bookElement}</td>
             })}
             </tr>;
     })}

@@ -16,9 +16,15 @@ async function subscribeToBooking(req, res) {
 }
 
 async function addBooking(req, res) {
-  const { date, trainer, trainType, hours } = req.body;
+  const { date, trainer, trainType, hours, startTime } = req.body;
 
-  const result = await bookService.addBooking(date, trainer, trainType, hours);
+  const result = await bookService.addBooking(
+    date,
+    trainer,
+    trainType,
+    hours,
+    startTime
+  );
 
   res.status(201).send({ message: "The booking was added!" });
 }

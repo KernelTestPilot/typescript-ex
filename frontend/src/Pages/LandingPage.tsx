@@ -1,17 +1,21 @@
 import React from 'react'
 import LoginForm from '../Components/LoginForm'
 import Banner from '../Components/Banner'
-import UserList from '../Components/UserList'
 import { useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import fetchHelper from '../Utils/fetchHelper'
+import { PersonInfo } from '../Types/User'
 
 interface Credentials {
   message: string,
   token: object
 }
 
-function LandingPage() {
+interface LandingPageProps {
+  setUser: (user: PersonInfo) => void
+}
+
+function LandingPage({setUser}: LandingPageProps): JSX.Element {
 
   const [formData, setFormData] = useState({ username: '', password: '' });
 
@@ -34,6 +38,7 @@ async function handleLogin () {
   const response: Credentials = await result.json();
   if (result.status < 400){
     sessionStorage.setItem("token" , JSON.stringify(response.token))
+    setUser(response.token as PersonInfo);
     navigate("/book")
   } else {
     setErrorMessage(response.message);
@@ -46,7 +51,6 @@ async function handleLogin () {
       handleFormChange={handleFormChange}
       handleLogin={handleLogin} />
     <p>{errorMessage}</p>
-    <UserList />
     </>
   )
 }

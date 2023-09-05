@@ -1,12 +1,11 @@
 
-import Calendar from '../Services/Calendar';
-import React, { useState,useEffect} from 'react';
+import React from 'react';
 interface BookingTheadProps {
    dateString: String [],
     weekdays: String[],
 }
 
-export default function BookingThead({weekdays, dateString}: BookingTheadProps) {
+export default function BookingThead({weekdays, dateString}: BookingTheadProps): JSX.Element {
   return (
     <thead>
       <tr>

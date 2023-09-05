@@ -21,11 +21,11 @@ POST HTTP://localhost:3001/admin/book
 Content-Type: application/json
 
 {
-    "date": "2023-09-06",
-    "trainer": "Isac",
-    "trainType": "Kondition",
+    "date": "2023-09-09",
+    "trainer": "Oscar",
+    "trainType": "Armar",
     "hours": 3,
-    "startTime": 9
+    "startTime": 8
 }
 ###
 POST HTTP://localhost:3001/user/book

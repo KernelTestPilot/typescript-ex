@@ -1,13 +1,13 @@
 import connection from "../db/db.js";
 
-async function addBooking(date, trainer, trainType, hours) {
+async function addBooking(date, trainer, trainType, hours, startTime) {
   const sql = `INSERT INTO bookings 
-  (date, hours, trainer, trainType) VALUES 
-  (?, ?, ?, ?)`;
+  (date, hours, trainer, trainType, startTime) VALUES 
+  (?, ?, ?, ?, ?)`;
 
   const result = await connection
     .promise()
-    .query(sql, [date, hours, trainer, trainType]);
+    .query(sql, [date, hours, trainer, trainType, startTime]);
 
   return result;
 }

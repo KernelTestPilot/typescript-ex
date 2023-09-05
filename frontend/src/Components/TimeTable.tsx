@@ -1,6 +1,6 @@
 import React from 'react'
 
-function TimeTable() {
+function TimeTable(): JSX.Element {
   return (
     <div>TimeTable</div>
   )

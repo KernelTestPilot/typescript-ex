@@ -1,19 +1,16 @@
-import React, {FormEvent, useState} from 'react';
+import React from 'react';
 
 interface LoginFormProps {
   handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleLogin: () => void;
 }
 
-const LoginForm: React.FC<LoginFormProps> = ({
-  handleFormChange,
-  handleLogin,
-}) => {
+function LoginForm({handleFormChange, handleLogin}: LoginFormProps): JSX.Element {
 
   return (
     <>
         <form>
-        <input className="" 
+              <input className="" 
                 id="username"
                 name="username" 
                 type="text" 
