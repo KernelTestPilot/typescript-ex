@@ -1,0 +1,38 @@
+@use "../abstract/variables" as *;
+
+.login {
+  padding: 1em;
+  margin: 1em;
+}
+
+.maincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em 1em 1em;
+  justify-content: space-evenly;
+}
+
+.login-input {
+  padding: 12px 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+.login-button {
+  padding: 14px 25px;
+  border: none;
+  text-align: center;
+  background-color: $c2;
+  color: #ffffff;
+  border-radius: 10px 10px 10px 10px;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.header {
+  width: 100%;
+  aspect-ratio: 3/1;
+  padding: 0.5em;
+  color: $c5;
+  font-size: 3em;
+  background-color: $c3;
+}

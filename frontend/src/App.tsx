@@ -19,12 +19,16 @@ function App(): JSX.Element {
   }, []);
 
   return (
+
    <BrowserRouter>
+   <div className='maincontainer' >
     <Routes>
       <Route index element={<LandingPage setUser={setUser} />}/>
       <Route path="/book" element={<BookingPage user={user}/>}/>
       {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminPage />}/>}
     </Routes>
+    <div className='footer'> test</div>
+    </div>
    </BrowserRouter>
   );
 }

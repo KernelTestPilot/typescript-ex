@@ -1,3 +1,41 @@
+.login {
+  padding: 1em;
+  margin: 1em;
+}
+
+.maincontainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1em 1em 1em;
+  justify-content: space-evenly;
+}
+
+.login-input {
+  padding: 12px 20px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.login-button {
+  padding: 14px 25px;
+  border: none;
+  text-align: center;
+  background-color: #ffbf69;
+  color: #ffffff;
+  border-radius: 10px 10px 10px 10px;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.header {
+  width: 100%;
+  aspect-ratio: 3/1;
+  padding: 0.5em;
+  color: #2ec4b6;
+  font-size: 3em;
+  background-color: #ffffff;
+}
+
 table {
   width: 98vw;
   margin: 0 auto;
@@ -35,4 +73,18 @@ table tbody tr td .booked {
 * {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #ffbf69;
+  color: white;
+  text-align: center;
 }/*# sourceMappingURL=main.css.map */
