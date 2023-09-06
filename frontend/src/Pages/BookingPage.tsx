@@ -17,7 +17,6 @@ function BookingPage(): JSX.Element {
     const user = useContext(UserContext);
     useEffect(() => {
       const token: string | null = sessionStorage.getItem("token");
-
       if(token === null) {
         navigate("/");
       }
@@ -27,7 +26,7 @@ function BookingPage(): JSX.Element {
   
     <div>
       <Navbar></Navbar>
-      <h2>BookingPage - Welcome {user?.username}</h2>
+
         <table>
         <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
         <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />

@@ -4,10 +4,18 @@
 .navbar{
   display: block;
   justify-content: center;
-  color: $c5;
+
+color: #333;
+}
+.navbar-loggedin{
+  position: absolute;
+  left: 0;
+  justify-content: end;
+  margin-bottom: 1em;
 
 }
 ul {
+  color: $c5;
   display:flex;
   list-style-type: none;
   a {
@@ -38,7 +46,7 @@ ul {
     display: flex;
     width:auto;
     justify-content: center;
-
+    position: relative;
   }
 
   img{

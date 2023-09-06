@@ -89,10 +89,18 @@ table tbody tr td .booked:hover {
 .navbar {
   display: block;
   justify-content: center;
-  color: #2ec4b6;
+  color: #333;
+}
+
+.navbar-loggedin {
+  position: absolute;
+  left: 0;
+  justify-content: end;
+  margin-bottom: 1em;
 }
 
 ul {
+  color: #2ec4b6;
   display: flex;
   list-style-type: none;
 }
@@ -119,6 +127,7 @@ ul a:hover {
   display: flex;
   width: auto;
   justify-content: center;
+  position: relative;
 }
 
 img {
