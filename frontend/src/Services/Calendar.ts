@@ -12,8 +12,9 @@ class Calendar implements ICalendar {
     date: Date;
     weekdays: string[];
     mondayDate: Date ;
-        constructor(){
+        constructor(timeOffset: number){
             this.date = new Date();
+            this.date.setTime(this.date.getTime() + timeOffset);
             this.weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
             this.mondayDate = this.date;
         

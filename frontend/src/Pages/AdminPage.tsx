@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Route, Routes } from 'react-router'
-import BookingThead from '../Components/BookingThead'
-import BookingTbody from '../Components/BookingTbody'
-import Calendar from '../Services/Calendar';
 import BookForm from '../Components/BookForm';
+import Users from '../Components/Users';
+import { PersonInfo } from '../Types/User';
+import BookTable from '../Components/BookTable';
 
-function AdminPage(): JSX.Element {
+interface AdminProps {
+  user: PersonInfo
+}
+
+function AdminPage({user}: AdminProps): JSX.Element {
   const [addBooking, setAddBooking] = useState<boolean>(false);
-  
-  const calendar = new Calendar();
-  const weekdays = calendar.getWeek();
 
   function onAddBookingClick(): void {
     setAddBooking(!addBooking);
@@ -22,13 +23,10 @@ function AdminPage(): JSX.Element {
           <h1>Bookings</h1>
           <button onClick={onAddBookingClick}>Add Booking</button>
           {addBooking && <BookForm setAddBooking={setAddBooking}/>}
-          <table>
-            <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
-            <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />
-          </table>
+          <BookTable user={user}/>
         </>
       }/>
-      <Route path="/users" element={<p>Users</p>}/>
+      <Route path="/users" element={<Users />}/>
     </Routes>
   )
 }
