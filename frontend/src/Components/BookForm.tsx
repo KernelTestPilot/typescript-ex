@@ -5,15 +5,18 @@ interface CreateBookingProps {
 }
 
 interface AddBookingProps {
-  date:"",
-
+  date:string,
+  startime: number,
+  exerciseLength: number,
+  exerciseType: string,
+  trainer: string
 }
 
 
 
 function BookForm({setAddBooking}: CreateBookingProps): JSX.Element {
 
-  const [formData, setFormData] = useState({date:"", startTime:0, exerciseLength:0, exerciseType:"", trainer:"" })
+  const [formData, setFormData] = useState({date:"", startTime:0, exerciseLength:0, exerciseType:"", trainer:""})
 
   // async function handleBookAdd () {
   //   const result : Response = await fetchHelper()

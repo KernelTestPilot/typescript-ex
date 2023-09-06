@@ -7,8 +7,8 @@ import BookForm from '../Components/BookForm';
 
 function AdminPage(): JSX.Element {
   const [addBooking, setAddBooking] = useState<boolean>(false);
+  
   const calendar = new Calendar();
-  //hämtar veckans datum + dagar som objekt
   const weekdays = calendar.getWeek();
 
   function onAddBookingClick(): void {
