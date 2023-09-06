@@ -1,35 +1,51 @@
+@use "../abstract/variables" as *;
 table {
-  width: 98vw;
+  width: 70vw;
   margin: 0 auto;
   thead {
     border: 1px solid black;
     tr {
       th {
-        border: 1px solid black;
+        border: 1px $c1;
+        background-color: var(--bg, $c2);
+        color: $c3;
       }
     }
   }
   tbody {
-    border: 1px solid black;
+    border: 1px solid ;
     tr {
       td:nth-child(1) {
+        color: $c3;
+        background-color: var(--bg, $c2);
         text-align: center;
+        font-size: large;
+        font-weight: bold;
         width: 50px;
       }
       td {
         position: relative;
-        border: 1px solid black;
+        border: 0.5px solid $c2;
         width: 175px;
         height: 80px;
         .booked {
+          font-size: 15px; 
+          font-weight: 400;
+          font-family:  cursive;
+         line-height: 24px;
           position: absolute;
+          background-color: var(--bg, $c1);
+          transform: rotate(var(--r, -1deg));
           z-index: 5;
           top: 0;
           left: 0;
-          background-color: blue;
-          color: white;
+          color:  #333;
           width: 100%;
           height: 100%;
+        }
+        .booked:hover{
+          transform: rotate(var(--r, 1deg));
+          box-shadow: 2px -3px $c2;
         }
       }
     }

@@ -7,17 +7,14 @@ import { useNavigate } from 'react-router';
 import Navbar from '../Components/Navbar';
 import {UserContext} from "../App"
 
-interface BookingPageProps {
-  user: PersonInfo | undefined
-}
 
-function BookingPage({user}: BookingPageProps): JSX.Element {
+
+function BookingPage(): JSX.Element {
   const navigate = useNavigate();
     const calendar = new Calendar();
-    const users = useContext(UserContext);
     //hämtar veckans datum + dagar som objekt
     const weekdays = calendar.getWeek();
-
+    const user = useContext(UserContext);
     useEffect(() => {
       const token: string | null = sessionStorage.getItem("token");
 
@@ -30,7 +27,6 @@ function BookingPage({user}: BookingPageProps): JSX.Element {
   
     <div>
       <Navbar></Navbar>
-      {users?.role}
       <h2>BookingPage - Welcome {user?.username}</h2>
         <table>
         <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />

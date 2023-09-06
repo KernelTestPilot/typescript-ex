@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald");
 .login {
   margin: auto;
 }
@@ -37,78 +38,94 @@
 }
 
 table {
-  width: 98vw;
+  width: 70vw;
   margin: 0 auto;
 }
 table thead {
   border: 1px solid black;
 }
 table thead tr th {
-  border: 1px solid black;
+  border: 1px #ff9f1c;
+  background-color: var(--bg, #ffbf69);
+  color: #ffffff;
 }
 table tbody {
-  border: 1px solid black;
+  border: 1px solid;
 }
 table tbody tr td:nth-child(1) {
+  color: #ffffff;
+  background-color: var(--bg, #ffbf69);
   text-align: center;
+  font-size: large;
+  font-weight: bold;
   width: 50px;
 }
 table tbody tr td {
   position: relative;
-  border: 1px solid black;
+  border: 0.5px solid #ffbf69;
   width: 175px;
   height: 80px;
 }
 table tbody tr td .booked {
+  font-size: 15px;
+  font-weight: 400;
+  font-family: cursive;
+  line-height: 24px;
   position: absolute;
+  background-color: var(--bg, #ff9f1c);
+  transform: rotate(var(--r, -1deg));
   z-index: 5;
   top: 0;
   left: 0;
-  background-color: blue;
-  color: white;
+  color: #333;
   width: 100%;
   height: 100%;
 }
+table tbody tr td .booked:hover {
+  transform: rotate(var(--r, 1deg));
+  box-shadow: 2px -3px #ffbf69;
+}
 
 .navbar {
-  padding-top: 1.6666666667vw;
+  display: block;
+  justify-content: center;
+  color: #2ec4b6;
+}
+
+ul {
   display: flex;
-  flex-direction: column;
+  list-style-type: none;
+}
+ul a {
+  margin: 10px 30px;
+  position: relative;
+  color: var(--text);
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+ul a:hover {
+  color: #ff9f1c;
 }
 
 .navbar-img {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
 }
 
-.navbar-btn {
-  margin: 1em;
-  background-color: #FFF;
-  border: 1px solid #AAA;
-  border-radius: 10px;
-  color: #333;
-  padding: 0.5em 1em;
-  font-size: 1em;
-  transition-duration: 0.2s;
-}
-
-.navbar-btn:hover {
-  background-color: #CCC;
-}
-
-.navbar-btn:active {
-  background-color: #AAA;
-}
-
 .navbar-main {
+  display: flex;
   width: auto;
-  text-align: center;
+  justify-content: center;
 }
 
 img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
+  z-index: -1;
+  position: relative;
 }
 
 * {
@@ -117,6 +134,7 @@ img {
 }
 
 body {
+  font-family: "Righteous";
   background-color: #ffffff;
   margin: auto;
 }
@@ -136,4 +154,5 @@ body {
 
 .footer-contact {
   padding: 1em;
+  color: #333;
 }/*# sourceMappingURL=main.css.map */

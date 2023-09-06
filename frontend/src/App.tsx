@@ -28,7 +28,7 @@ function App(): JSX.Element {
    <div className='maincontainer' >
     <Routes>
       <Route index element={<LandingPage setUser={setUser} />}/>
-      <Route path="/book" element={<BookingPage user={user}/>}/>
+      <Route path="/book" element={<BookingPage/>}/>
       {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminPage />}/>}
     </Routes>
     <Footer></Footer>

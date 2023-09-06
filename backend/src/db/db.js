@@ -64,7 +64,8 @@ function initializeDB() {
         FOREIGN KEY(userid) REFERENCES users(userid)
    ); 
    INSERT INTO users (username, password, role) VALUE("oskar", "password", "ADMIN");
-  
+   INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-09", 09,2, "Oskar","yoga");
+
    `;
 
   connection.query(sql, (error) => {
