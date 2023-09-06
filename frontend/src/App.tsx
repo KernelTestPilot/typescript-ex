@@ -5,7 +5,7 @@ import BookingPage from './Pages/BookingPage';
 import AdminPage from './Pages/AdminPage';
 import "./stylesheet/main.css";
 import { PersonInfo } from './Types/User';
-
+import Footer from './Components/Footer';
 function App(): JSX.Element {
   const [user, setUser] = useState<PersonInfo | undefined>();
 
@@ -27,7 +27,7 @@ function App(): JSX.Element {
       <Route path="/book" element={<BookingPage user={user}/>}/>
       {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminPage />}/>}
     </Routes>
-    <div className='footer'> test</div>
+    <Footer></Footer>
     </div>
    </BrowserRouter>
   );

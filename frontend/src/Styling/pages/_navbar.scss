@@ -1,0 +1,44 @@
+@use "../abstract/variables" as *;
+
+
+.navbar{
+    padding-top: calc(5vw / 3);
+    display: flex;
+    flex-direction: column;
+}
+.navbar-img{
+    position:absolute;
+    left:0;
+    top:0;
+}
+.navbar-btn {
+    margin: 1em;
+    background-color: #FFF;
+    border: 1px solid #AAA;
+    border-radius: 10px;
+    color: #333;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    transition-duration: 0.2s;
+  }
+
+  .navbar-btn:hover {
+    background-color: #CCC;
+  }
+  
+  .navbar-btn:active {
+    background-color: #AAA;
+  }
+
+  .navbar-main{
+    width:auto;
+    text-align:center;
+
+  }
+
+  img{
+    height:100px;
+    width:100px;
+    
+   
+  }

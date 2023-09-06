@@ -2,8 +2,8 @@ import mysql2 from "mysql2";
 
 const connection = mysql2.createConnection({
   host: "localhost",
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  user: "root",
+  password: "password",
   multipleStatements: true,
 });
 
@@ -12,9 +12,10 @@ connection.connect((error) => {
     console.log(error);
   } else {
     console.log("Connection to DB!");
+    initializeDB();
     connection.query("USE db", (error) => {
       if (error) {
-        initializeDB();
+       
       } else {
         // addUser("Test", "password");
       }
@@ -35,7 +36,9 @@ function addUser(username, password) {
 }
 
 function initializeDB() {
-  const sql = `CREATE DATABASE db;
+  const sql = `
+  drop database db;
+  CREATE DATABASE db;
   USE db;
   CREATE TABLE users (
        userid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -59,7 +62,10 @@ function initializeDB() {
         FOREIGN KEY(bookingid) REFERENCES bookings(bookingid),
         userid int, 
         FOREIGN KEY(userid) REFERENCES users(userid)
-   );`;
+   ); 
+   INSERT INTO users (username, password, role) VALUE("oskar", "password", "ADMIN");
+  
+   `;
 
   connection.query(sql, (error) => {
     if (error) {

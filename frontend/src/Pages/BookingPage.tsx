@@ -4,7 +4,7 @@ import BookingTbody from '../Components/BookingTbody';
 import Calendar from '../Services/Calendar';
 import { PersonInfo } from '../Types/User';
 import { useNavigate } from 'react-router';
-
+import Navbar from '../Components/Navbar';
 
 interface BookingPageProps {
   user: PersonInfo | undefined
@@ -25,7 +25,10 @@ function BookingPage({user}: BookingPageProps): JSX.Element {
     }, [navigate]);
     
   return (
-    <div><h2>BookingPage - Welcome {user?.username}</h2>
+  
+    <div>
+      <Navbar></Navbar>
+      <h2>BookingPage - Welcome {user?.username}</h2>
         <table>
         <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
         <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />
