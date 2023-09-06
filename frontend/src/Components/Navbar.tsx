@@ -1,10 +1,15 @@
-import React from 'react'
 
-const Navbar: React.FC = ()=>{
+import { PersonInfo } from '../Types/User';
+import React, { useContext } from 'react';
 
+import {UserContext} from "../App"
+
+function Navbar  ():JSX.Element {
+  const user = useContext(UserContext);
 
   return (
     <>
+    {user?.role}
     <div className='navbar'>
   
         <h1>String n' Epics</h1>

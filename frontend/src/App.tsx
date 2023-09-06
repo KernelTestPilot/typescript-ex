@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext,createContext } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import LandingPage from './Pages/LandingPage';
 import BookingPage from './Pages/BookingPage';
@@ -6,6 +6,9 @@ import AdminPage from './Pages/AdminPage';
 import "./stylesheet/main.css";
 import { PersonInfo } from './Types/User';
 import Footer from './Components/Footer';
+
+const UserContext = createContext<PersonInfo | undefined>(undefined);
+
 function App(): JSX.Element {
   const [user, setUser] = useState<PersonInfo | undefined>();
 
@@ -21,6 +24,7 @@ function App(): JSX.Element {
   return (
 
    <BrowserRouter>
+   <UserContext.Provider value={user}>
    <div className='maincontainer' >
     <Routes>
       <Route index element={<LandingPage setUser={setUser} />}/>
@@ -29,8 +33,11 @@ function App(): JSX.Element {
     </Routes>
     <Footer></Footer>
     </div>
+    </UserContext.Provider>
    </BrowserRouter>
+
   );
 }
 
 export default App;
+export { UserContext };
