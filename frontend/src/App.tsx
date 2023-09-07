@@ -2,7 +2,7 @@ import React, { useEffect, useState, createContext } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import LandingPage from './Pages/LandingPage';
 import BookingPage from './Pages/BookingPage';
-import AdminPage from './Pages/AdminPage';
+import AdminRoutes from './Pages/AdminRoutes';
 import "./stylesheet/main.css";
 import { PersonInfo } from './Types/User';
 import Footer from './Components/Footer';
@@ -38,7 +38,7 @@ function App(): JSX.Element {
     <Routes>
       <Route index element={<LandingPage setUser={setUser} />}/>
       <Route path="/book" element={<BookingPage/>}/>
-      {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminPage />}/>}
+      {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminRoutes />}/>}
     </Routes>
     <Footer></Footer>
     </div>

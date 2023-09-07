@@ -21,9 +21,7 @@ export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element
     const [bookings, setBookings] = useState<Bookings[]>([]);
 
     async function bookingData (): Promise<Bookings[]> {
-    
         const result: Response = await fetchHelper("/user/book", "GET")
-    
         return (await result.json()) as Bookings[];
     }
 
@@ -34,10 +32,8 @@ export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element
     }
 
     function getTdElement(day: string, dayIndex: number, hourOfDay: number): JSX.Element {
-        let bookElement: JSX.Element = <div></div>;
-                        
+        let bookElement: JSX.Element = <div></div>;          
         const booking: Bookings | undefined = findBookingForDayAndHour(day, hourOfDay);
-        
         if(booking !== undefined) {
             bookElement = <BookElement booking={booking}/>;
         }
