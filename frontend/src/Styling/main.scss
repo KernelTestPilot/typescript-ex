@@ -1,22 +1,32 @@
 @use "./abstract/variables" as *;
 @use "./pages/login" as *;
 @use "./components/BookingPage" as *;
-
+@use "./pages/navbar" as *;
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
+  font-family: 'Righteous';
   background-color: $c3;
+  margin:auto;
 }
 
 .footer {
   position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   left: 0;
   bottom: 0;
   width: 100%;
   background-color: $c2;
   color: white;
   text-align: center;
+
+}
+.footer-contact{
+  padding: 1em;
+  color: #333;
 }

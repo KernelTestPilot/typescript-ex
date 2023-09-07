@@ -4,11 +4,7 @@ import BookingTbody from './BookingTbody'
 import Calendar from '../Services/Calendar';
 import { PersonInfo } from '../Types/User';
 
-interface BookTableProps {
-    user: PersonInfo | undefined
-}
-
-export default function BookTable({user}: BookTableProps) {
+export default function BookTable() {
     const [offset, setOffset] = useState<number>(0);
     const [calendar, setCalendar] = useState<Calendar>(new Calendar(offset));
 
@@ -39,7 +35,7 @@ export default function BookTable({user}: BookTableProps) {
       <button onClick={nextWeekClick}>Nästa vecka</button>
       <table>
         <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
-        <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} user={user} />
+        <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />
       </table>
     </>
   )

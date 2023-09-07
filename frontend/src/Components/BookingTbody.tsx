@@ -4,8 +4,7 @@ import BookElement from './BookElement';
 import fetchHelper from '../Utils/fetchHelper';
 import { PersonInfo } from '../Types/User';
 interface BookingTbodyProps {
-    weekdays: string[],
-    user: PersonInfo | undefined
+    weekdays: string[]
 }
 
 export interface Bookings {
@@ -26,7 +25,7 @@ async function bookingData (): Promise<Bookings[]> {
 
 const hours: Array<Hour> = [8,9,10,11,12,13,14,15,16,17,18];
 
-export default function BookingTbody({weekdays, user}: BookingTbodyProps): JSX.Element {
+export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element {
     const [bookings, setBookings] = useState<Bookings[]>([]);
 
     function findBookingForDayAndHour(dayString: string, hourOfDay: number): Bookings | undefined {
@@ -41,7 +40,7 @@ export default function BookingTbody({weekdays, user}: BookingTbodyProps): JSX.E
         const booking: Bookings | undefined = findBookingForDayAndHour(day, hourOfDay);
         
         if(booking !== undefined) {
-            bookElement = <BookElement booking={booking} user={user}/>;
+            bookElement = <BookElement booking={booking}/>;
         }
         return <td key={`table-td-${dayIndex}`}>{bookElement}</td>
     }

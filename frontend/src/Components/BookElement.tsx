@@ -1,14 +1,15 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, useContext } from 'react'
 import { Bookings } from './BookingTbody';
 import fetchHelper from '../Utils/fetchHelper';
-import { PersonInfo } from '../Types/User';
+import { UserContext } from '../App';
 
 interface BookElementProps {
     booking: Bookings;
-    user: PersonInfo | undefined
 }
 
-export default function BookElement({booking, user}: BookElementProps): JSX.Element {
+export default function BookElement({booking}: BookElementProps): JSX.Element {
+    const user = useContext(UserContext);
+    
     async function onSubscribeClick() {
         const result = await fetchHelper("/user/book", "POST", {bookingid: booking.bookingid, username: user!.username});
 

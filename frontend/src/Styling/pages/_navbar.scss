@@ -1,0 +1,58 @@
+@use "../abstract/variables" as *;
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
+.navbar{
+  display: block;
+  justify-content: center;
+
+color: #333;
+}
+.navbar-loggedin{
+  position: absolute;
+  left: 0;
+  justify-content: end;
+  margin-bottom: 1em;
+
+}
+ul {
+  color: $c5;
+  display:flex;
+  list-style-type: none;
+  a {
+    margin: 10px 30px;
+    position: relative;
+    color: var(--text);
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+   
+  }
+  a:hover{
+
+    color: $c1;
+  }
+}
+
+
+.navbar-img{
+    position:absolute;
+    right: 0;
+    top:0;
+}
+
+  .navbar-main{
+    display: flex;
+    width:auto;
+    justify-content: center;
+    position: relative;
+  }
+
+  img{
+    height:150px;
+    width:150px;
+    z-index:-1;
+    position: relative;
+   
+  }

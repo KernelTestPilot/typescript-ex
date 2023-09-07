@@ -1,14 +1,9 @@
 import React, { useEffect }  from 'react'
-import { PersonInfo } from '../Types/User';
 import { useNavigate } from 'react-router';
+import Navbar from '../Components/Navbar';
 import BookTable from '../Components/BookTable';
 
-
-interface BookingPageProps {
-  user: PersonInfo | undefined
-}
-
-function BookingPage({user}: BookingPageProps): JSX.Element {
+function BookingPage(): JSX.Element {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,8 +16,8 @@ function BookingPage({user}: BookingPageProps): JSX.Element {
     
   return (
     <div>
-      <h2>BookingPage - Welcome {user?.username}</h2>
-      <BookTable user={user}/>
+      <Navbar />
+      <BookTable/>
     </div>
   )
 }

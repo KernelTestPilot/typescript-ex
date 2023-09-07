@@ -13,30 +13,14 @@ connection.connect((error) => {
     console.log(error);
   } else {
     console.log("Connection to DB!");
-    connection.query("USE db", (error) => {
-      if (error) {
-        initializeDB();
-      } else {
-        // addUser("Test", "password");
-      }
-    });
+    initializeDB();
   }
 });
 
-function addUser(username, password) {
-  const sql = `INSERT INTO users (username, password, role) VALUES (?, ?, "USER")`;
-
-  connection.query(sql, [username, password], (error) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log("The user was added!");
-    }
-  });
-}
-
 function initializeDB() {
-  const sql = `CREATE DATABASE db;
+  const sql = `
+  drop database db;
+  CREATE DATABASE db;
   USE db;
   CREATE TABLE users (
        userid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -60,7 +44,16 @@ function initializeDB() {
         FOREIGN KEY(bookingid) REFERENCES bookings(bookingid),
         userid int, 
         FOREIGN KEY(userid) REFERENCES users(userid)
-   );`;
+   ); 
+   INSERT INTO users (username, password, role) VALUE("oskar", "password", "ADMIN");
+   INSERT INTO users (username, password, role) VALUE("filip", "password", "ADMIN");
+   INSERT INTO users (username, password, role) VALUE("isac", "password", "ADMIN");
+   INSERT INTO users (username, password, role) VALUE("gertrude", "password", "USER");
+   INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-09", 09,2, "Oskar","yoga");
+   INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-07", 09,2, "Isac","kondition");
+   INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-12", 09,3, "Filip","Pre-Army workout");
+
+   `;
 
   connection.query(sql, (error) => {
     if (error) {
