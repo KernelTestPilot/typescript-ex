@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Hour } from '../Types/ScheduleTypes';
 import BookElement from './BookElement';
 import fetchHelper from '../Utils/fetchHelper';
-import { PersonInfo } from '../Types/User';
 interface BookingTbodyProps {
     weekdays: string[]
 }
@@ -16,17 +15,17 @@ export interface Bookings {
     trainType: string
 }
 
-async function bookingData (): Promise<Bookings[]> {
-    
-    const result: Response = await fetchHelper("/user/book", "GET")
-
-    return (await result.json()) as Bookings[];
-}
-
 const hours: Array<Hour> = [8,9,10,11,12,13,14,15,16,17,18];
 
 export default function BookingTbody({weekdays}: BookingTbodyProps): JSX.Element {
     const [bookings, setBookings] = useState<Bookings[]>([]);
+
+    async function bookingData (): Promise<Bookings[]> {
+    
+        const result: Response = await fetchHelper("/user/book", "GET")
+    
+        return (await result.json()) as Bookings[];
+    }
 
     function findBookingForDayAndHour(dayString: string, hourOfDay: number): Bookings | undefined {
         return bookings.find((data: Bookings) => {

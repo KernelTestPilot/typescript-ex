@@ -5,6 +5,8 @@ GET HTTP://localhost:3001/user/book
 ###
 GET HTTP://localhost:3001/admin/users
 ###
+GET HTTP://localhost:3001/user/subscriptions?username=filip
+###
 GET HTTP://localhost:3001/admin/subUsers
 
 ###
@@ -33,5 +35,13 @@ Content-Type: application/json
 
 {
     "username": "Isac",
+    "bookingId": 1
+}
+###
+DELETE HTTP://localhost:3001/user/book
+Content-Type: application/json
+
+{
+    "username": "filip",
     "bookingId": 1
 }

@@ -1,6 +1,9 @@
+import { Bookings } from "../Components/BookingTbody";
+
 export type PersonInfo = {
 role: role;
 username: string;
+subscriptions: Bookings [];
 };
 
-type role = "ADMIN" | "USER";
+export type role = "ADMIN" | "USER";

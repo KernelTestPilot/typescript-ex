@@ -15,6 +15,19 @@ async function subscribeToBooking(req, res) {
   res.status(201).send({ message: "You subscribed!" });
 }
 
+async function unSubscribeToBooking(req, res) {
+  const { username, bookingId } = req.body;
+
+  const userInfo = await authService.getUser(username);
+
+  const result = await bookService.unSubscribeToBooking(
+    userInfo[0][0].userid,
+    bookingId
+  );
+
+  res.status(200).send({ message: "You unsubscribed!" });
+}
+
 async function addBooking(req, res) {
   const { date, trainer, trainType, hours, startTime } = req.body;
 
@@ -39,7 +52,7 @@ async function getSubscribedUsers(req, res) {
   const sql = `SELECT users.username, users.role, users.userid, userbookings.bookingid FROM users INNER JOIN userbookings ON users.userId = userbookings.userId`;
 
   const result = await connection.promise().query(sql);
-  console.log(result);
+
   res.status(200).send(result[0]);
 }
 async function getUsers(req, res) {
@@ -47,10 +60,21 @@ async function getUsers(req, res) {
   const result = await connection.promise().query(sql);
   res.status(200).send(result[0]);
 }
+
+async function getSubscriptions(req, res) {
+  const { username } = req.query;
+
+  const result = await bookService.getSubscriptions(username);
+
+  res.status(200).send(result[0]);
+}
+
 export default {
   subscribeToBooking,
   addBooking,
   getAllBookings,
   getSubscribedUsers,
   getUsers,
+  getSubscriptions,
+  unSubscribeToBooking,
 };

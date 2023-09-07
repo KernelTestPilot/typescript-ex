@@ -34,9 +34,7 @@ function initializeDB() {
         startTime int NOT NULL, 
         hours int NOT NULL,
         trainer varchar(20) NOT NULL,
-        trainType varchar(20) NOT NULL,
-        userid INT , 
-        FOREIGN KEY (userid) REFERENCES users(userid)
+        trainType varchar(20) NOT NULL
         );
     CREATE TABLE userbookings (
         id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -52,7 +50,7 @@ function initializeDB() {
    INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-09", 09,2, "Oskar","yoga");
    INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-07", 09,2, "Isac","kondition");
    INSERT INTO bookings (date, startTime, hours,trainer,trainType) VALUES ("2023-09-12", 09,3, "Filip","Pre-Army workout");
-
+   INSERT INTO userbookings (bookingid, userid) VALUES (1, 2);
    `;
 
   connection.query(sql, (error) => {

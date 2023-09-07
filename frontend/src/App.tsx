@@ -6,6 +6,8 @@ import AdminPage from './Pages/AdminPage';
 import "./stylesheet/main.css";
 import { PersonInfo } from './Types/User';
 import Footer from './Components/Footer';
+import { Bookings } from './Components/BookingTbody';
+import fetchHelper from './Utils/fetchHelper';
 
 const UserContext = createContext<PersonInfo | undefined>(undefined);
 
@@ -16,7 +18,14 @@ function App(): JSX.Element {
     const token: string | null = sessionStorage.getItem("token");
 
     if(token !== null) {
-      setUser(JSON.parse(token) as PersonInfo);
+      const savedUser = JSON.parse(token) as PersonInfo;
+      
+      fetchHelper(`/user/subscriptions?username=${savedUser.username}`,"GET").then(result => {
+        result.json().then(json => {
+          savedUser.subscriptions = json as Bookings[];
+          setUser(savedUser);
+        });
+      });
     }
 
   }, []);

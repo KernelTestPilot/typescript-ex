@@ -1,10 +1,6 @@
 import React, { FormEvent, useState,ChangeEvent } from 'react'
 import fetchHelper from '../Utils/fetchHelper';
 
-interface CreateBookingProps {
-    setAddBooking: (boolean: boolean) => void;
-}
-
 interface AddBookingProps {
   date: string,
   startTime: number,
@@ -13,8 +9,8 @@ interface AddBookingProps {
   trainer: string
 }
 
-function BookForm({setAddBooking}: CreateBookingProps): JSX.Element {
-  const [serverMessage, setServerMessage] = useState('');
+function BookForm(): JSX.Element {
+  const [serverMessage, setServerMessage] = useState<string>('');
 
   const initdateFormData: AddBookingProps = {
     date: "",

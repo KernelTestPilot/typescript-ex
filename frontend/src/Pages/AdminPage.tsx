@@ -17,7 +17,7 @@ function AdminPage(): JSX.Element {
         <>
           <h1>Bookings</h1>
           <button onClick={onAddBookingClick}>Add Booking</button>
-          {addBooking && <BookForm setAddBooking={setAddBooking}/>}
+          {addBooking && <BookForm />}
           <BookTable/>
         </>
       }/>

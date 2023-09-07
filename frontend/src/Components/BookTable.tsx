@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import BookingThead from './BookingThead'
 import BookingTbody from './BookingTbody'
 import Calendar from '../Services/Calendar';
-import { PersonInfo } from '../Types/User';
 
 export default function BookTable() {
     const [offset, setOffset] = useState<number>(0);

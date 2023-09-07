@@ -19,6 +19,13 @@ async function subscribeToBooking(userId, bookingid) {
 
   return result;
 }
+async function unSubscribeToBooking(userid, bookingId) {
+  const sql = `DELETE FROM userbookings WHERE userid = ? AND bookingid = ?`;
+
+  const result = await connection.promise().query(sql, [userid, bookingId]);
+
+  return result;
+}
 
 async function getAllBookings() {
   const sql = `SELECT * FROM bookings;`;
@@ -26,4 +33,23 @@ async function getAllBookings() {
   return connection.promise().query(sql);
 }
 
-export default { addBooking, getAllBookings, subscribeToBooking };
+async function getSubscriptions(username) {
+  const sql = `SELECT bookings.* FROM bookings 
+  INNER JOIN userbookings 
+  INNER JOIN users 
+  WHERE userbookings.bookingid = bookings.bookingid AND 
+  userbookings.userid = users.userid AND 
+  users.username = ?`;
+
+  const result = await connection.promise().query(sql, [username]);
+
+  return result;
+}
+
+export default {
+  addBooking,
+  getAllBookings,
+  subscribeToBooking,
+  getSubscriptions,
+  unSubscribeToBooking,
+};

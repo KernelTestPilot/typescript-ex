@@ -1,4 +1,4 @@
-import React, { CSSProperties, useContext } from 'react'
+import React, { CSSProperties, useContext, useEffect, useState } from 'react'
 import { Bookings } from './BookingTbody';
 import fetchHelper from '../Utils/fetchHelper';
 import { UserContext } from '../App';
@@ -9,13 +9,36 @@ interface BookElementProps {
 
 export default function BookElement({booking}: BookElementProps): JSX.Element {
     const user = useContext(UserContext);
+    const [isSubscribed, setSub] = useState<boolean>(false);
+
+    useEffect(() => {
+        setSub(isWorkoutInSubscriptions());
+        
+    }, [user?.subscriptions]);
     
+
     async function onSubscribeClick() {
-        const result = await fetchHelper("/user/book", "POST", {bookingid: booking.bookingid, username: user!.username});
+        if(!isSubscribed){  
+            const result = await fetchHelper("/user/book", "POST", {bookingId: booking.bookingid, username: user!.username});
 
-        const json = await result.json();
+            await result.json();
 
-        console.log(json);
+            if(result.status < 400) {
+                setSub(true)
+            }
+        }
+    }
+    
+    async function onUnsubscribeClick() {
+        if(isSubscribed){
+            const result = await fetchHelper("/user/book", "DELETE", {bookingId: booking.bookingid, username: user!.username});
+        
+            await result.json();
+
+            if(result.status < 400){
+                setSub(false);
+            }
+        }
     }
 
     const time: number = booking.hours;
@@ -27,10 +50,21 @@ export default function BookElement({booking}: BookElementProps): JSX.Element {
         return user !== undefined && user.role === "ADMIN" && urlLocation.endsWith("/admin/bookings");
     }
 
+    function isWorkoutInSubscriptions(): boolean {
+        const workout = user?.subscriptions.find(sub => 
+            sub.bookingid === booking.bookingid
+        );
+
+        return workout !== undefined;
+    }
+    const subBtn = isSubscribed ?  
+        <button onClick={onUnsubscribeClick}>Unsubscribe</button> : 
+        <button onClick={onSubscribeClick}>Subscribe</button>;
+
     const btn: JSX.Element = isOnAdmin() ? 
         <button>See workout details</button>
         : 
-        <button onClick={onSubscribeClick}>Subscribe</button>
+        subBtn
 
     return (
     <div className='booked' style={styles}>

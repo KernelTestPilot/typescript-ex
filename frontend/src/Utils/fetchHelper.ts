@@ -1,4 +1,4 @@
-export type FetchMethod = "GET" | "POST";
+export type FetchMethod = "GET" | "POST" | "DELETE";
 
 export default async function fetchHelper(url: string, method: FetchMethod, body?: object): Promise<Response> {
     const baseURL: string = "http://localhost:3001";
