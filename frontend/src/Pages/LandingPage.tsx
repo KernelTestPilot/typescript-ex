@@ -7,6 +7,7 @@ import fetchHelper from '../Utils/fetchHelper'
 import { PersonInfo, role } from '../Types/User'
 import { Bookings } from '../Components/BookingTable/BookingTbody';
 
+
 interface Credentials {
   message: string,
   token: object
@@ -62,11 +63,17 @@ async function handleLogin () {
 };
   return (
     <>
+    <div className='maincontainer'>
+      <div className='container-login'>
     <Banner />
+  
     <LoginForm 
       handleFormChange={handleFormChange}
       handleLogin={handleLogin} />
+         
     <p>{errorMessage}</p>
+    </div>
+    </div>
     </>
   )
 }

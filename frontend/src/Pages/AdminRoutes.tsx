@@ -12,20 +12,26 @@ function AdminRoutes(): JSX.Element {
   <Routes>
     <Route path="/" element={
          <>
+         <div className='maincontainer'>
          <Navbar/>
          <AdminMainPage/>
+         </div>
          </>
     }/>
     <Route path="/bookings" element={
           <>
+          <div className='maincontainer'>
           <Navbar/>
           <AdminBookPage/>
+          </div>
           </>
     }/>
     <Route path="/users" element={
         <>
+        <div className='maincontainer'>
         <Navbar /> 
         <AdminUserPage/>
+        </div>
         </>
     } />
   </Routes>

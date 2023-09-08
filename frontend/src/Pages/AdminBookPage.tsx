@@ -10,6 +10,7 @@ function AdminBookPage(): JSX.Element {
     }
   return (
     <>
+    <div className='maincontainer'>
        <div className='TableWrapper'>
           <div className='TableForm'> 
           <button onClick={onAddBookingClick}>Add Booking</button>
@@ -17,6 +18,7 @@ function AdminBookPage(): JSX.Element {
           </div>
           <BookTable/>
        </div>
+      </div>
     </>
   )
 }

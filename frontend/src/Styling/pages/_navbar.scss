@@ -2,17 +2,23 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
 
 .navbar{
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-
-color: #333;
+  background-color: #333;
+  width: 100vw;
+  h1{
+  
+    color: $c2;
+  }
 }
 .navbar-loggedin{
-  position: absolute;
+  padding-left: 2em;
+  position: relative;
   left: 0;
-  justify-content: end;
-  margin-bottom: 1em;
 
+  padding-top: 3em;
+  color: #fff;
 }
 ul {
   color: $c5;

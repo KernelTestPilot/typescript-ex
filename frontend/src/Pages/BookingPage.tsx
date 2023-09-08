@@ -15,7 +15,7 @@ function BookingPage(): JSX.Element {
   }, [navigate]);
     
   return (
-    <div>
+    <div className='maincontainer'>
       <Navbar />
       <div className='TableWrapper'>
       <BookTable/>

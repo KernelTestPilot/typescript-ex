@@ -8,13 +8,21 @@
   flex-wrap: wrap;
   padding: 0 1em 1em 1em;
   justify-content: space-evenly;
-  width: 100%;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .login-input {
   padding: 12px 20px;
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 1em;
 }
 
 .login-button {
@@ -23,9 +31,8 @@
   text-align: center;
   background-color: #ffbf69;
   color: #ffffff;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   width: 100%;
-  margin-top: 1em;
 }
 
 .header {
@@ -34,12 +41,26 @@
   padding: 0.5em;
   color: #2ec4b6;
   font-size: 3em;
-  background-color: #ffffff;
+  font-size: calc(10px + 2vmin);
+}
+
+.main-header {
+  background: url("../Assets/gympic.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  aspect-ratio: 3/1;
+  position: fixed;
+  z-index: -1;
+  padding: 0.5em;
+  color: #FFF;
+  font-size: 4em;
 }
 
 table {
   width: 70vw;
   margin: 0 auto;
+  padding-bottom: 5em;
 }
 table thead {
   border: 1px solid black;
@@ -122,7 +143,7 @@ table tbody tr td .booked:hover {
 .Table-Nav button:after {
   content: "";
   position: absolute;
-  border: 1px solid #2ec4b6;
+  border: 1px solid #333;
   bottom: 4px;
   left: 4px;
   width: calc(100% - 1px);
@@ -191,16 +212,22 @@ table tbody tr td .booked:hover {
 }
 
 .navbar {
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  color: #333;
+  background-color: #333;
+  width: 100vw;
+}
+.navbar h1 {
+  color: #ffbf69;
 }
 
 .navbar-loggedin {
-  position: absolute;
+  padding-left: 2em;
+  position: relative;
   left: 0;
-  justify-content: end;
-  margin-bottom: 1em;
+  padding-top: 3em;
+  color: #fff;
 }
 
 ul {
@@ -250,6 +277,7 @@ body {
   font-family: "Righteous";
   background-color: #ffffff;
   margin: auto;
+  overflow-x: hidden;
 }
 
 .footer {

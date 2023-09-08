@@ -34,14 +34,14 @@ function App(): JSX.Element {
 
    <BrowserRouter>
    <UserContext.Provider value={user}>
-   <div className='maincontainer' >
+
     <Routes>
       <Route index element={<LandingPage setUser={setUser} />}/>
       <Route path="/book" element={<BookingPage/>}/>
       {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminRoutes />}/>}
     </Routes>
     <Footer></Footer>
-    </div>
+ 
     </UserContext.Provider>
    </BrowserRouter>
 

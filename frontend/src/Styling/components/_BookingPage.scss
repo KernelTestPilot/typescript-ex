@@ -3,6 +3,7 @@
 table {
   width: 70vw;
   margin: 0 auto;
+  padding-bottom: 5em;
   thead {
     border: 1px solid black;
     tr {
@@ -87,7 +88,7 @@ margin: auto;
     button:after {
       content: '';
       position: absolute;
-      border: 1px solid $c5;
+      border: 1px solid #333;
       bottom: 4px;
       left: 4px;
       width: calc(100% - 1px);

@@ -14,13 +14,12 @@ interface NavBarUserProps {
     return(
       <>
      <div className='navbar'>
-          <h1>Strong n' Epics</h1>
-          <div className='navbar-img'>
-          <img src={gympic} alt="A superstrong dude" />
-          </div>
+     <div className='navbar-loggedin'>
+        <h1>Strong n' Epics</h1>
+        <h4>Logged in as: {user?.username}</h4>
+        </div> 
           <div className='navbar-main'>
           <div className='navbar-loggedin'>
-          <h4>Logged in as: {user?.username}</h4>
           </div>
           <ul>
           <Link to={"/"}>Home</Link>

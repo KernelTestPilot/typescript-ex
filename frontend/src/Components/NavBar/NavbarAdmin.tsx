@@ -1,5 +1,6 @@
 
 import React, { useContext } from 'react';
+
 import {UserContext} from "../../App"
 import { Link } from 'react-router-dom';
 import gympic from "../../Assets/gympic.png";
@@ -14,14 +15,13 @@ interface NavBarAdminProps {
     return(
       <>
        <div className='navbar'>
-        <h1>Strong n' Epics</h1>
-        <div className='navbar-img'>
-        <img src={gympic} alt="A superstrong dude" />
-        </div>
-        <div className='navbar-main'>
         <div className='navbar-loggedin'>
+        <h1>Strong n' Epics</h1>
         <h4>Logged in as: {user?.role}</h4>
         </div>
+        <div className='navbar-main'>
+      
+        
         <ul>
         <Link to={"/book"}>Home</Link>
         <Link to={"/admin/bookings"}>Book in trainer</Link>
