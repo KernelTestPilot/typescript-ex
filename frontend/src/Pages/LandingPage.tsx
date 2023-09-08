@@ -5,7 +5,7 @@ import { useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom';
 import fetchHelper from '../Utils/fetchHelper'
 import { PersonInfo, role } from '../Types/User'
-import { Bookings } from '../Components/BookingTbody';
+import { Bookings } from '../Components/BookingTable/BookingTbody';
 
 interface Credentials {
   message: string,

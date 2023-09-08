@@ -6,7 +6,7 @@ import AdminRoutes from './Pages/AdminRoutes';
 import "./stylesheet/main.css";
 import { PersonInfo } from './Types/User';
 import Footer from './Components/Footer';
-import { Bookings } from './Components/BookingTbody';
+import { Bookings } from './Components/BookingTable/BookingTbody';
 import fetchHelper from './Utils/fetchHelper';
 
 const UserContext = createContext<PersonInfo | undefined>(undefined);

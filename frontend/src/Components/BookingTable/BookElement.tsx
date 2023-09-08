@@ -1,7 +1,7 @@
 import React, { CSSProperties, useContext, useEffect, useState } from 'react'
 import { Bookings } from './BookingTbody';
-import fetchHelper from '../Utils/fetchHelper';
-import { UserContext } from '../App';
+import fetchHelper from '../../Utils/fetchHelper';
+import { UserContext } from '../../App';
 import BookButtons from './BookButtons';
 
 interface BookElementProps {

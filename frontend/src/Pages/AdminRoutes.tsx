@@ -3,8 +3,8 @@ import { Route, Routes } from 'react-router'
 import AdminUserPage from './AdminUserPage';
 import AdminBookPage from './AdminBookPage';
 import AdminMainPage from './AdminMainPage';
-import Navbar from '../Components/Navbar';
-function AdminPage(): JSX.Element {
+import Navbar from '../Components/NavBar/Navbar';
+function AdminRoutes(): JSX.Element {
 
     
   return (
@@ -32,4 +32,4 @@ function AdminPage(): JSX.Element {
   )
 }
 
-export default AdminPage
+export default AdminRoutes

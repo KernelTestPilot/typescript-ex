@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import BookingThead from './BookingThead'
 import BookingTbody from './BookingTbody'
-import Calendar from '../Services/Calendar';
+import Calendar from '../../Services/Calendar';
+import WeekButtons from './WeekButtons';
 
 export default function BookTable() {
     const [offset, setOffset] = useState<number>(0);
@@ -29,13 +30,16 @@ export default function BookTable() {
       }
   return (
     <>
-      <button onClick={previousWeekClick}>Föregående vecka</button>
-      <button onClick={resetOffsetClick}>Nuvarande vecka</button>
-      <button onClick={nextWeekClick}>Nästa vecka</button>
+      <div className='Table-Nav'>
+      <WeekButtons previousWeekClick = {previousWeekClick} resetOffsetClick= {resetOffsetClick} nextWeekClick = {nextWeekClick} />
+      </div>
+      <div className='Table-Main'> 
       <table>
         <BookingThead weekdays={weekdays.map(dayObj => dayObj.weekdays)} dateString={weekdays.map(dayObj => dayObj.dateString)} />
         <BookingTbody weekdays={weekdays.map(dayObj => dayObj.dateString)} />
       </table>
+      </div>
+      
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { Bookings } from "../Components/BookingTbody";
+import { Bookings } from "../Components/BookingTable/BookingTbody";
 
 export type PersonInfo = {
 role: role;

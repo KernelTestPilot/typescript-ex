@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Hour } from '../Types/ScheduleTypes';
+import { Hour } from '../../Types/ScheduleTypes';
 import BookElement from './BookElement';
-import fetchHelper from '../Utils/fetchHelper';
+import fetchHelper from '../../Utils/fetchHelper';
 interface BookingTbodyProps {
     weekdays: string[]
 }

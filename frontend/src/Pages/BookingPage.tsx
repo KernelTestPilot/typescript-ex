@@ -1,7 +1,7 @@
 import React, { useEffect }  from 'react'
 import { useNavigate } from 'react-router';
-import Navbar from '../Components/Navbar';
-import BookTable from '../Components/BookTable';
+import Navbar from '../Components/NavBar/Navbar';
+import BookTable from '../Components/BookingTable/BookTable';
 
 function BookingPage(): JSX.Element {
   const navigate = useNavigate();
@@ -17,7 +17,9 @@ function BookingPage(): JSX.Element {
   return (
     <div>
       <Navbar />
+      <div className='TableWrapper'>
       <BookTable/>
+      </div>
     </div>
   )
 }
