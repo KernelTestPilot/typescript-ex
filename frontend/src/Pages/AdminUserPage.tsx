@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Users from '../Components/Users';
+import Users from '../Components/UserList/Users';
 
 function AdminUserPage(): JSX.Element {
 

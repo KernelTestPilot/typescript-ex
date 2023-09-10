@@ -296,4 +296,9 @@ body {
 .footer-contact {
   padding: 1em;
   color: #333;
+}
+
+.list-wrapper {
+  max-width: 400px;
+  margin: 50px auto;
 }/*# sourceMappingURL=main.css.map */
