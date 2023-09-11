@@ -1,6 +1,11 @@
 import React, { FormEvent, useState,ChangeEvent } from 'react'
 import fetchHelper from '../Utils/fetchHelper';
 
+/*
+  User story 1:5, Component 1/1
+  Description: Renders the bookform for adding new workouts.
+*/
+
 interface AddBookingProps {
   date: string,
   startTime: number,
@@ -8,6 +13,8 @@ interface AddBookingProps {
   trainType: string,
   trainer: string
 }
+
+type InputType = string | number;
 
 function BookForm(): JSX.Element {
   const [serverMessage, setServerMessage] = useState<string>('');
@@ -23,7 +30,13 @@ function BookForm(): JSX.Element {
   const [formData, setFormData] = useState<AddBookingProps>(initdateFormData);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>):void {
-    const {value,name} = event.target;
+    const name = event.target.name;
+    let value: InputType = event.target.value;
+    
+    if(event.target.type === "number") {
+      value = Number(value);
+    }
+    
     setFormData(prevData => ({
       ...prevData,
       [name]: value,
@@ -37,14 +50,14 @@ function BookForm(): JSX.Element {
       setServerMessage("Workout has to be longer than 1 hour!");
       return;
     }
-
-    if(formData.startTime + formData.hours > 18 || formData.startTime < 8){
+    
+    if(((formData.startTime + formData.hours) > 18) || (formData.startTime < 8)) {
       setServerMessage("Workout is outside the timeframe!");
       return;
     }
     
     const response : Response = await fetchHelper("/admin/book", "POST", formData)
-    if(response.status < 400 && formData.hours <= 18 && formData.hours >= 8) {
+    if(response.status < 400) {
       setServerMessage("Workout added!");
     } else{
       setServerMessage("Book was not added, contact closest Javascript-programmer");

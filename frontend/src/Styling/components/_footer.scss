@@ -1,0 +1,19 @@
+@use "../abstract/variables" as *;
+
+.footer {
+  z-index: 10;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $c2;
+  color: white;
+  text-align: center;
+}
+.footer-contact {
+  padding: 1em;
+  color: #333;
+}

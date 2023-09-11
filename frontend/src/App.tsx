@@ -9,6 +9,11 @@ import Footer from './Components/Footer';
 import { Bookings } from './Components/BookingTable/BookingTbody';
 import fetchHelper from './Utils/fetchHelper';
 
+/*
+  User story 1:6, Component 1/1
+  Description: Renders the root component for the entire website. Must have role ADMIN to access the admin path.
+*/
+
 const UserContext = createContext<PersonInfo | undefined>(undefined);
 
 function App(): JSX.Element {
@@ -20,18 +25,16 @@ function App(): JSX.Element {
     if(token !== null) {
       const savedUser = JSON.parse(token) as PersonInfo;
       
-      fetchHelper(`/user/subscriptions?username=${savedUser.username}`,"GET").then(result => {
-        result.json().then(json => {
-          savedUser.subscriptions = json as Bookings[];
+      fetchHelper(`/user/subscriptions?username=${savedUser.username}`,"GET").then((result: Response) => {
+        result.json().then((json: Bookings[]) => {
+          savedUser.subscriptions = json;
           setUser(savedUser);
         });
       });
     }
-
   }, []);
 
   return (
-
    <BrowserRouter>
    <UserContext.Provider value={user}>
 
@@ -40,11 +43,10 @@ function App(): JSX.Element {
       <Route path="/book" element={<BookingPage/>}/>
       {user !== undefined && user.role === "ADMIN" && <Route path="/admin/*" element={<AdminRoutes />}/>}
     </Routes>
-    <Footer></Footer>
+    <Footer />
  
     </UserContext.Provider>
    </BrowserRouter>
-
   );
 }
 

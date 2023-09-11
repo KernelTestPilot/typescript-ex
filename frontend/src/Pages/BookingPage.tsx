@@ -6,7 +6,7 @@ import BookTable from '../Components/BookingTable/BookTable';
 function BookingPage(): JSX.Element {
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect((): void => {
     const token: string | null = sessionStorage.getItem("token");
 
     if(token === null) {

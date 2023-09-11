@@ -1,54 +1,47 @@
-import React, { CSSProperties, useContext, useEffect, useState } from 'react'
+import React, { CSSProperties, useContext, useState } from 'react'
 import { Bookings } from './BookingTbody';
-import fetchHelper from '../../Utils/fetchHelper';
 import { UserContext } from '../../App';
 import BookButtons from './BookButtons';
+import { useLocation } from 'react-router';
+import AdminWorkoutDetails from '../AdminWorkoutDetails';
+
+/*
+  User story: 2:1
+  Component: 4/4
+  Description: Renders the workout information.
+*/
 
 interface BookElementProps {
     booking: Bookings;
 }
 
 export default function BookElement({booking}: BookElementProps): JSX.Element {
+    const [renderWD, setRenderWD] = useState<boolean>(false);
     const user = useContext(UserContext);
-    const [isSubscribed, setSub] = useState<boolean>(false);
     const time: number = booking.hours;
+    const location = useLocation();
+    const OnAdmin = location.pathname.startsWith ("/admin");
     const styles: CSSProperties = {height: `${time}00%`, paddingBottom: `${time === 1 ? 0 : 2 * time}px`}
+    
 
-    useEffect(() => {
-        setSub(isWorkoutInSubscriptions());
-    }, [user?.subscriptions]);
-    
-    async function onSubscribeClick() {
-        if(!isSubscribed){  
-            const result = await fetchHelper("/user/book", "POST", {bookingId: booking.bookingid, username: user!.username});
-            await result.json();
-            if(result.status < 400) {
-                setSub(true)
-            }
-        }
-    }
-    
-    async function onUnsubscribeClick() {
-        if(isSubscribed){
-            const result = await fetchHelper("/user/book", "DELETE", {bookingId: booking.bookingid, username: user!.username});
-            await result.json();
-            if(result.status < 400){
-                setSub(false);
-            }
-        }
+    function isOnAdmin(): boolean {
+        return user !== undefined && user.role === "ADMIN" && OnAdmin;
     }
 
-    function isWorkoutInSubscriptions(): boolean {
-        const workout = user?.subscriptions.find(sub => 
-            sub.bookingid === booking.bookingid
-        );
-        return workout !== undefined;
+    function onSeeWDClick(): void {
+        setRenderWD(true);
     }
+
+    const btn = isOnAdmin() ? 
+        <button onClick={onSeeWDClick}>See workout details</button> : 
+        <BookButtons booking={booking}  />;
     
     return (
     <div className='booked' style={styles}>
-        <p>{booking.trainType}</p><p>{booking.trainer}</p>
-        <BookButtons isSubscribed={isSubscribed} onSubscribeClick={onSubscribeClick} onUnsubscribeClick={onUnsubscribeClick}  />
+        <p>{booking.trainType}</p>
+        <p>{booking.trainer}</p>
+        {btn}
+        {renderWD && <AdminWorkoutDetails booking={booking} setRenderWD={setRenderWD} />}
     </div>
   )
 }

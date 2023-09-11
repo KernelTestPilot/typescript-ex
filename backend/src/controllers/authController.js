@@ -17,6 +17,8 @@ async function login(req, res) {
         username: userArr[0].username,
         role: userArr[0].role,
       },
+      email: userArr[0].email,
+      phone: userArr[0].phone,
     });
   } else {
     res.status(400).send({ message: "Incorrect username or password!" });

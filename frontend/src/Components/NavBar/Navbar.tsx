@@ -5,7 +5,11 @@ import {UserContext} from "../../App"
 import NavbarAdmin from './NavbarAdmin';
 import NavbarUser from './NavbarUser';
 
-function Navbar  ():JSX.Element {
+/*
+  Description: Logic for rendering navbars, checks for role
+*/
+
+function Navbar():JSX.Element {
   const user = useContext(UserContext);
   const navigate = useNavigate();
   const location = useLocation();

@@ -1,4 +1,9 @@
 import React from 'react';
+/*
+  User story: 3:1 
+  Component: 1/2
+  Description: Login form for users to get access to the booking page.
+*/
 
 interface LoginFormProps {
   handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,7 +28,7 @@ function LoginForm({handleFormChange, handleLogin}: LoginFormProps): JSX.Element
                 id="password" 
                 type="password"
                 name="password"  
-                placeholder="Lösenord..."
+                placeholder="Password..."
                 onChange={handleFormChange}
                 />
             <button className="login-button" type='submit'

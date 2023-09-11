@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Route, Routes } from 'react-router'
 import AdminUserPage from './AdminUserPage';
 import AdminBookPage from './AdminBookPage';
 import AdminMainPage from './AdminMainPage';
 import Navbar from '../Components/NavBar/Navbar';
+
 function AdminRoutes(): JSX.Element {
 
-    
   return (
-    
   <Routes>
     <Route path="/" element={
          <>

@@ -2,66 +2,18 @@
 @use "./pages/login" as *;
 @use "./components/BookingPage" as *;
 @use "./pages/navbar" as *;
+@use "./components/workoutDetails" as *;
+@use "./components/footer" as *;
+@use "./components/sublist" as *;
+
 * {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: 'Righteous';
+  font-family: "Righteous";
   background-color: $c3;
-  margin:auto;
-  overflow-x:hidden
-}
-
-.footer {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: $c2;
-  color: white;
-  text-align: center;
-
-}
-.footer-contact{
-  padding: 1em;
-  color: #333;
-}
-
-.list-wrapper {
-  max-width: 400px;
-  margin: 50px auto;
-}
-
-.list {
-  background: $white;
-  border-radius: 2px;
-  list-style: none;
-  padding: 10px 20px;
-}
-
-.list-item {
-  display: flex;
-  margin: 10px;
-  padding-bottom: 5px;
-  padding-top: 5px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  &-content{
-    margin-left: 20px;
-    h4, p{
-      margin: 0;
-    }
-    h4{
-      margin-top: 10px;
-      font-size: 18px;
-    }
-    p{
-      margin-top: 5px;
-      color: $white-two;
-    }
-  }
+  margin: auto;
+  overflow-x: hidden;
 }

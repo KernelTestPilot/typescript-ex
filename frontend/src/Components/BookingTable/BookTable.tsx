@@ -4,16 +4,22 @@ import BookingTbody from './BookingTbody'
 import Calendar from '../../Services/Calendar';
 import WeekButtons from './WeekButtons';
 
-export default function BookTable() {
-    const [offset, setOffset] = useState<number>(0);
-    const [calendar, setCalendar] = useState<Calendar>(new Calendar(offset));
+/*
+  User story: 2:1
+  Component: 1/4
+  Description: Renders the table for all bookings available. 
+*/
+
+export default function BookTable(): JSX.Element {
+    const [timeOffset, setTimeOffset] = useState<number>(0);
+    const [calendar, setCalendar] = useState<Calendar>(new Calendar(timeOffset));
 
      //hämtar veckans datum + dagar som objekt
-    const weekdays = calendar.getWeek();
+    const weekdays:{ weekdays: string; dateString: string } [] = calendar.getWeek();
 
     function updateOffset(time: number): void {
-        setOffset(offset + time);
-        setCalendar(new Calendar(offset + time));
+        setTimeOffset(timeOffset + time);
+        setCalendar(new Calendar(timeOffset + time));
       }
 
     function nextWeekClick(): void {
@@ -25,7 +31,7 @@ export default function BookTable() {
       }
     
       function resetOffsetClick(): void {
-        setOffset(0);
+        setTimeOffset(0);
         setCalendar(new Calendar(0));
       }
   return (

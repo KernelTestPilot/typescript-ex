@@ -94,17 +94,11 @@ table tbody tr td .booked {
   line-height: 24px;
   position: absolute;
   background-color: var(--bg, #ff9f1c);
-  transform: rotate(var(--r, -1deg));
   z-index: 5;
   top: 0;
   left: 0;
   color: #333;
   width: 100%;
-  height: 100%;
-}
-table tbody tr td .booked:hover {
-  transform: rotate(var(--r, 1deg));
-  box-shadow: 2px -3px #ffbf69;
 }
 
 .TableWrapper {
@@ -120,7 +114,7 @@ table tbody tr td .booked:hover {
 }
 .Table-Nav button {
   background-color: #cbf3f0;
-  border: 0 solid #E5E7EB;
+  border: 0 solid #e5e7eb;
   box-sizing: border-box;
   color: #000000;
   font-size: 0, 5rem;
@@ -268,19 +262,43 @@ img {
   position: relative;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+.black-background {
+  z-index: 15;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
 }
-
-body {
-  font-family: "Righteous";
-  background-color: #ffffff;
-  margin: auto;
-  overflow-x: hidden;
+.black-background .workout-details {
+  z-index: 20;
+  background-color: #ff9f1c;
+  width: 20em;
+  height: 30em;
+  margin: 5em auto;
+  padding: 1em;
+}
+.black-background .workout-details .workout-user {
+  display: flex;
+  justify-content: space-around;
+  border-bottom: solid 0.1em black;
+  padding: 0.25em 0;
+}
+.black-background .workout-details .workout-user button {
+  background-color: #2ec4b6;
+  border-radius: 0.25em;
+  padding: 0.25em 0.75em;
+  border: none;
+  box-shadow: 0 0 5px black;
+  color: white;
+}
+.black-background .workout-details .workout-user button:hover {
+  box-shadow: 0 0 10px black;
 }
 
 .footer {
+  z-index: 10;
   position: fixed;
   display: flex;
   align-items: center;
@@ -299,6 +317,46 @@ body {
 }
 
 .list-wrapper {
-  max-width: 400px;
+  width: 80vw;
   margin: 50px auto;
+}
+.list-wrapper .list {
+  width: 80%;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  border-radius: 2px;
+  list-style: none;
+  padding: 10px 20px;
+}
+.list-wrapper .list .list-item {
+  min-width: 15em;
+  display: flex;
+  flex-direction: column;
+  background-color: #333;
+  border-radius: 0.2em;
+  gap: 0.3em;
+  padding: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+.list-wrapper .list .list-item h4 {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+.list-wrapper .list .list-item p {
+  margin-top: 5px;
+  color: #d6d6d6;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Righteous";
+  background-color: #ffffff;
+  margin: auto;
+  overflow-x: hidden;
 }/*# sourceMappingURL=main.css.map */

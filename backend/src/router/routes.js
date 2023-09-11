@@ -11,6 +11,7 @@ router.get("/user/book", bookController.getAllBookings);
 router.get("/user/subscriptions", bookController.getSubscriptions);
 
 router.post("/admin/book", bookController.addBooking);
+router.delete("/admin/unSubUser", bookController.unSubUser);
 router.get("/admin/subUsers", bookController.getSubscribedUsers);
 router.get("/admin/users", bookController.getUsers);
 

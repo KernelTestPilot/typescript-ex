@@ -49,14 +49,20 @@ async function getAllBookings(req, res) {
 }
 
 async function getSubscribedUsers(req, res) {
-  const sql = `SELECT users.username, users.role, users.userid, userbookings.bookingid FROM users INNER JOIN userbookings ON users.userId = userbookings.userId`;
+  const { bookingID } = req.query;
 
-  const result = await connection.promise().query(sql);
+  let sql = `SELECT users.username, users.role, users.userid, userbookings.bookingid FROM users INNER JOIN userbookings ON users.userId = userbookings.userId`;
+
+  if (bookingID !== undefined) {
+    sql += ` AND userbookings.bookingid = ?`;
+  }
+
+  const result = await connection.promise().query(sql, [bookingID]);
 
   res.status(200).send(result[0]);
 }
 async function getUsers(req, res) {
-  const sql = `SELECT username, role, userid FROM users`;
+  const sql = `SELECT username, role, userid, email, phone FROM users`;
   const result = await connection.promise().query(sql);
   res.status(200).send(result[0]);
 }
@@ -69,6 +75,16 @@ async function getSubscriptions(req, res) {
   res.status(200).send(result[0]);
 }
 
+async function unSubUser(req, res) {
+  const { userID, bookingID } = req.body;
+
+  const sql = `DELETE FROM userbookings WHERE userid = ? AND bookingid = ?;`;
+
+  const result = await connection.promise().query(sql, [userID, bookingID]);
+
+  res.send({ message: "whopdido det funkade!" });
+}
+
 export default {
   subscribeToBooking,
   addBooking,
@@ -77,4 +93,5 @@ export default {
   getUsers,
   getSubscriptions,
   unSubscribeToBooking,
+  unSubUser,
 };

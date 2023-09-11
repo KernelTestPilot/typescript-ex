@@ -1,8 +1,10 @@
-
 import React, { useContext } from 'react';
 import {UserContext} from "../../App"
 import { Link } from 'react-router-dom';
-import gympic from "../../Assets/gympic.png";
+
+/*
+  Description: Logic for users navbar
+*/
 
 interface NavBarUserProps {
     handleLogout: () => void;

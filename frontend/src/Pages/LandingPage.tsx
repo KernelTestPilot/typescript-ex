@@ -6,11 +6,25 @@ import { useNavigate } from 'react-router-dom';
 import fetchHelper from '../Utils/fetchHelper'
 import { PersonInfo, role } from '../Types/User'
 import { Bookings } from '../Components/BookingTable/BookingTbody';
-
+/*
+  User story: 3:1 
+  Component: 2/2
+  Description: Login form for users to get access to the booking page.
+*/
 
 interface Credentials {
   message: string,
-  token: object
+  token: object,
+  phone: number,
+  email: string
+}
+interface Token {
+  username: string,
+  role: role
+}
+interface FormData {
+  username: string,
+  password: string
 }
 
 interface LandingPageProps {
@@ -19,7 +33,7 @@ interface LandingPageProps {
 
 function LandingPage({setUser}: LandingPageProps): JSX.Element {
 
-  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [formData, setFormData] = useState<FormData>({ username: '', password: '' });
 
   const [errorMessage, setErrorMessage] = useState<string>('');
   const navigate = useNavigate();
@@ -32,12 +46,7 @@ function LandingPage({setUser}: LandingPageProps): JSX.Element {
     }));
 }
 
-interface Token {
-  username: string,
-  role: role
-}
-
-async function handleLogin () {
+async function handleLogin (): Promise<void> {
   setErrorMessage("");
   const result: Response = await fetchHelper("/auth/login", "POST", formData);
 
@@ -50,7 +59,9 @@ async function handleLogin () {
         const newUser: PersonInfo = {
           username: formData.username, 
           role: (response.token as Token).role,
-          subscriptions: json as Bookings[]
+          subscriptions: json as Bookings[],
+          email: response.email,
+          phone: response.phone,
         }
         setUser(newUser);
         navigate("/book")

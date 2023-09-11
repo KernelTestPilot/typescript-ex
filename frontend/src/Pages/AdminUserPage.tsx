@@ -1,13 +1,8 @@
-import React, {useState} from 'react'
-import Users from '../Components/UserList/Users';
+import React from 'react'
+import UserList from '../Components/UserList/UserList';
 
 function AdminUserPage(): JSX.Element {
-
-  return (
-    <>
-  <Users/>
-    </>
-  )
+  return <UserList/>;
 }
 
 export default AdminUserPage

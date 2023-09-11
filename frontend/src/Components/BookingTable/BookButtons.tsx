@@ -1,42 +1,56 @@
-import React, {useContext } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import fetchHelper from '../../Utils/fetchHelper';
 import { UserContext } from '../../App';
+import { Bookings } from './BookingTbody';
+
+/*
+  User story: 2:2 & 2:3 
+  Component: 1/1
+  Description: Renders the buttons and logic to sub and unsub for a excersise
+*/
 
 interface BookButtonsProps{
-    isSubscribed: boolean;
-    onSubscribeClick: () => Promise<void>;
-    onUnsubscribeClick: () => Promise<void>;
+    booking: Bookings;
 }
-function BookButtons(props: BookButtonsProps): JSX.Element {
-    const { isSubscribed, onUnsubscribeClick, onSubscribeClick } = props;
+
+function BookButtons({booking}: BookButtonsProps): JSX.Element {
     const user = useContext(UserContext);
-    const location = useLocation();
-    const OnAdmin = location.pathname.startsWith ("/admin");
+    const [isSubscribed, setSub] = useState<boolean>(false);
 
-    function isOnAdmin(): boolean {
-        return user !== undefined && user.role === "ADMIN" && OnAdmin;
+    useEffect((): void => {
+        setSub(isWorkoutInSubscriptions());
+
+        function isWorkoutInSubscriptions(): boolean {
+            const workout = user?.subscriptions.find((subscription): boolean => 
+                subscription.bookingid === booking.bookingid
+            );
+            return workout !== undefined;
+        }
+    }, [user?.subscriptions, booking.bookingid]);
+
+    async function onSubscribeClick(): Promise<void> {
+        if(!isSubscribed){  
+            const result: Response = await fetchHelper("/user/book", "POST", {bookingId: booking.bookingid, username: user!.username});
+            if(result.status < 400) {
+                setSub(true)
+            }
+        }
+    }
+    
+    async function onUnsubscribeClick(): Promise<void> {
+        if(isSubscribed){
+            const result: Response = await fetchHelper("/user/book", "DELETE", {bookingId: booking.bookingid, username: user!.username});
+            if(result.status < 400) {
+                setSub(false);
+            }
+        }
     }
 
-    if(isOnAdmin()){
-        return(
-        <div>
-            <button>See workout details</button>
-        </div>
-        )
-    }
     if (isSubscribed){
-        return (
-            <div>
-                 <button onClick={onUnsubscribeClick}>Unsubscribe</button> 
-            </div>
-        )
-    }else {
-        return (
-        <div>
-             <button onClick={onSubscribeClick}>Subscribe</button>
-        </div>
-        )
+        return <button onClick={onUnsubscribeClick}>Unsubscribe</button>;
     }
+    
+    return <button onClick={onSubscribeClick}>Subscribe</button>;
 }
 
 export default BookButtons
